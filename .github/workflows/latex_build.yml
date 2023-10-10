@@ -19,14 +19,8 @@ jobs:
           root_file: main.tex
           latexmk_use_xelatex: true
 
-      - name: Build LaTeX document
-        run: |
-          xelatex -interaction=nonstopmode -halt-on-error main.tex
-
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add main.pdf
-          git commit -m "Update main.pdf"
-          git push
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: main.pdf
