@@ -1,0 +1,74 @@
+\section{P. 도미노 수열}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{P}{도미노 수열}
+    \sectionmeta{
+        \texttt{lazy\_segment\_tree}\\
+        출제진 의도 -- \textbf{\color{acdiamond}Challenging}
+    }
+    \begin{itemize}
+        \item 제출 60번, 정답자 0명 (정답률 0.000\%)
+        \item 처음 푼 사람: \textbf{없음},
+        \item 출제자: \texttt{ygonepiece}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{P}. 도미노 수열}
+    \begin{itemize}
+        \item 수열의 첫 번째 수부터 넣으면서 도미노 수열을 만들어 봅시다.
+        \item 수를 넣을 때, 새로운 도미노 수열을 만들 수도 있고 기존의 것에 수를 이어 붙일 수도 있기 때문에 경우의 수가 많이 생기게 됩니다.
+        \item 도미노 수열의 합과 길이를 중심으로 생각해 봅시다.
+        \item 만들어진 도미노 수열에 특정 수를 뒤에 붙일 수 있으면 무조건 붙이는 게 이득이라는 것을 알 수 있습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{P}. 도미노 수열}
+    \begin{itemize}
+        
+        \item 이를 토대로 Naive한 DP식을 떠올려 보겠습니다.
+        \item $a_i$ 이상의 합을 이루는 도미노 수열 뒤에 $a_i$를 붙이고, 도미노 수열의 합이 $w$을 이루는 수열 중 최대 길이를 $dp[i][w]$라고 합시다.
+        \item 초기 점화식은 $dp[i][a_i] = 1$이고, 점화식은 $dp[i][w] = dp[i-1][w-a_i] + 1 \ (a_i \leq w-a_i) \ (1 \le dp[i-1][w-a_i])$, $dp[i][w] = dp[i-1][w] \ (w < a_i)$입니다.
+        \item 만약 $dp[i-1][w-a_i]$의 값이 0이라면 합이 $w - a_i$인 도미노 수열이 존재 하지 않으므로 $a_i$를 덧붙일 수 없습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{P}. 도미노 수열}
+    \begin{itemize}
+        \item 위 점화식은 $a_i$이상의 무게를 갖는 모든 도미노 수열에서 $a_i$가 덧붙여졌고 길이도 1 증가 한다는 특징을 가집니다.
+        \item $w$가 굉장히 클 수 있기 때문에 모든 $w$를 Naive하게 탐색하며 dp식을 적용 할 수 없습니다.
+        \item 존재하는 $w$만 관리하여 $a_i$를 덧붙이면 한번의 작업에 $O(N)$의 시간이 걸리게 됩니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{P}. 도미노 수열}
+    \begin{itemize}
+        \item 레이지 세그먼트 트리를 이용하면 빠른 시간안에 도미노 수열의 합이 $a_i$이상인 모든 도미노 수열의 길이을 $1$ 증가 시키고 무게도 $a_i$ 증가 시킬 수 있습니다.
+        \item $dp[i][w]$가 $1$ 이상인 모든 $w$는 $i+1$번째 연산 후, $w+a_{i+1} (a_{i+1} \leq w)$ 으로 값이 $1$ 더해져 전이하게 됩니다.
+        \item 즉, 서로 다른 도미노 수열의 합의 크기 순서는 변하지 않습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{P}. 도미노 수열}
+    \begin{itemize}
+        \item $a_i$보다 합이 큰 도미노 수열이 존재하지 않는 경우에는 새로운 도미노 수열을 만들면 됩니다.
+        \item $a_i$보다 합이 큰 도미노 수열이 존재한다면, $a_i$로 시작하는 도미노 수열을 만드는 것보다 그 수열에 덧붙이는 게 이득이기 때문입니다.
+        \item 따라서 이 같은 경우는 가장 긴 도미노 수열이 될 수 없기 때문에, $a_i$로 시작하는 도미노 수열은 만들지 않습니다. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{P}. 도미노 수열}
+    \begin{itemize}
+        \item 필요 없는 도미노 수열은 만들지 않으면서 도미노 수열들을 관리하게 되면 무게를 기준으로 정렬된 도미노 수열들을 관리 할 수 있습니다.
+        \item 그러면 각 도미노 수열을 특정 인덱스로 잡고, 무게를 관리하는 레이지 세그먼트 트리와 길이를 관리하는 레이지 세그먼트 트리로 관리 할 수 있습니다.
+        \item 무게를 관리하는 레이지 세그먼트 트리를 이용해서 덧붙일 수 있는 도미노 수열들이 있는 구간을 찾고, 레이지하게 무게와 길이를 업데이트 하면 됩니다.
+        \item 이때, 길이는 실시간으로 파악하지 않아도 되므로 업데이트에 $O(1)$ 마지막에 $O(N)$으로 관리해줘도 됩니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{P}. 도미노 수열}
+    \begin{itemize}
+        \item 도미노 수열들의 무게를 관리하고 무게로 이분 탐색을 하기 위해서는 구간 최댓값 세그먼트 트리를 이용하면 됩니다.
+        \item 세그먼트 트리 왼쪽으로 우선 내려가며, 인자로 받은 무게 값보다 구간 최댓값이 더 작다면 리턴하여 올라오면 됩니다.
+        \item 따라서 이 문제는 $O(N\log N)$으로 해결 할 수 있습니다.
+    \end{itemize}
+\end{frame}

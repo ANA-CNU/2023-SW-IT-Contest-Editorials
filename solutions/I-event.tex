@@ -1,0 +1,23 @@
+\section{I. 행사 준비}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{I}{행사 준비}
+    \sectionmeta{
+        \texttt{greedy}\\
+        출제진 의도 -- \textbf{\color{acgold}Medium}
+    }
+    \begin{itemize}
+        \item 제출 127번, 정답자 16명 (정답률 12.598\%)
+        \item 처음 푼 사람: \textbf{22학번최약체}, 31분
+        \item 출제자: \texttt{kaorin}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{I}. 행사 준비}
+    \begin{itemize}
+        \item 물건의 가격 $(p_1, q_1), (p_2, q_2), \cdots, (p_N, q_N)$을 $p_i - q_i$를 기준으로 오름차순으로 정렬합니다. 앞에서부터 동하가 $A$개의 물건을, 지원이가 $B$개의 물건을 구입하는 것이 최적해입니다.
+        \item 이 방법이 최적해임을 증명하기 위해서, 이 방법을 따르지 않는 임의의 더 나은 최적해가 있다고 가정하겠습니다.
+        \item 이 방법을 따르지 않는 임의의 더 나은 최적해에는 $p_i - q_i < p_j - q_j$를 만족하는 $i, j$번째 물건 중에서 $i$번째 물건은 지원이가, $j$번째 물건은 동하가 구입한 경우가 적어도 하나 존재합니다. 각각의 물건을 구입하는 비용을 합치면 $q_i + p_j$입니다.
+        \item 그런데, $p_i - q_i < p_j - q_j$의 항을 적절히 이항시키면 $p_i + q_j < q_i + p_j$로 만들 수 있습니다. 즉, 반대로 $i$번째 물건을 동하가, $j$번째 물건을 지원이가 구입하면 더 나은 해를 만들 수 있다는 것이고, 이는 우리가 처음에 가정했던 임의의 더 나은 최적해라는 가정에 모순됩니다. 따라서 이 방법이 최적해입니다.
+    \end{itemize}
+\end{frame}

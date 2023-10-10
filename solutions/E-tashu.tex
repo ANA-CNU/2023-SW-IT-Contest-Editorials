@@ -1,0 +1,25 @@
+\section{E. 타슈}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{E}{타슈}
+    \sectionmeta{
+        \texttt{ad\_hoc}\\
+        출제진 의도 -- \textbf{\color{acbronze}Easy}
+    }
+    \begin{itemize}
+        \item 제출 80번, 정답자 46명 (정답률 57.500\%)
+        \item 처음 푼 사람: \textbf{미미미누}, 3분
+        \item 출제자: \texttt{kaorin}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{\textbf{E}. 타슈}
+    \begin{itemize}
+        \item $c_i = a_i - b_i$로 정의합니다. 유실된 자전거는 없기 때문에, $c_1 + c_2 + \cdots + c_N = 0$입니다.
+        \item $c_i < 0$인 대여소의 자전거 하나를 $c_j > 0$인 자전거 대여소로 옮기는 과정을 반복하면 $c_1, c_2, \cdots, c_N$이 모두 $0$이 되게 만들 수 있습니다.
+        \item $c_i < 0$인 $c_i$의 합은 $c_i > 0$인 $c_i$의 합과 같습니다. 따라서 위 과정은 $c_i < 0$번 반복하면 되고, 이 횟수가 $b_1, b_2, \cdots, b_N$을 $a_1, a_2, \cdots, a_N$으로 만드는데 필요한 자전거를 옮기는 횟수의 하한입니다.
+        \item 요약하면, 정답은 $\frac{\sum_{i=1}^{N}|a_i - b_i|}{2}$입니다.
+    \end{itemize}
+
+\end{frame}

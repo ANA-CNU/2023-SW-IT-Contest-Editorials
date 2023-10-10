@@ -1,0 +1,23 @@
+\section{F. 강의실 예약 시스템}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{F}{강의실 예약 시스템}
+    \sectionmeta{
+        \texttt{implementation}\\
+        출제진 의도 -- \textbf{\color{acsilver}Easy}
+    }
+    \begin{itemize}
+        \item 제출 184번, 정답자 16명 (정답률 17.934\%)
+        \item 처음 푼 사람: \textbf{김승현}, 6분
+        \item 출제자: \texttt{kaorin}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{F}. 강의실 예약 시스템}
+    \begin{itemize}
+        \item $r[i]$를 $i$번째 강의실에 대해서 수락한 마지막 예약이 끝나는 시각으로 정의합니다.
+        \item $j$번째 예약에 관한 정보가 $k_j, s_j, e_j$라고 할 때, $r[k_j] \le s_j$라면 예약이 가능하고, 그렇지 않다면 예약이 불가능합니다.
+        \item 예약이 가능하다면 $r[k_j] \leftarrow e_j$로 업데이트 해줍니다.
+        \item 입출력을 최대 $200\,000$줄 해야하므로 버퍼 입출력 등을 사용해야합니다.
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,22 @@
+\section{K. 옥수수밭}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{K}{옥수수밭}
+    \sectionmeta{
+        \texttt{graphs, graph\_traversal, priority\_queue}\\
+        출제진 의도 -- \textbf{\color{acgold}Hard}
+    }
+    \begin{itemize}
+        \item 제출 50번, 정답자 7명 (정답률 14.000\%)
+        \item 처음 푼 사람: \textbf{박현민}, 37분
+        \item 출제자: \texttt{kaorin}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{K}. 옥수수밭}
+    \begin{itemize}
+        \item 현재 수확할 수 있는 옥수수의 가치를 유지하는 우선순위 큐를 정의합니다. 우선순위는 옥수수의 가치로 정의합니다.
+        \item 격자의 $i$행 $j$열$(i, j)$에 위치한 옥수수를 수확하면, 현재 수확할 수 있는 옥수수는 상하좌우로 인접한 격자 $(i \pm 1, j \pm 1)$에 위치한 옥수수가 추가됩니다. 이미 수확한 옥수수는 제외합니다.
+        \item 힙을 이용하여 우선순위 큐를 구현하면 \complexity{K \times \log{K}}시간에 해결할 수 있습니다.
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,22 @@
+\section{H. 순열 선물하기}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{H}{순열 선물하기}
+    \sectionmeta{
+        \texttt{math, number\_theory, ad\_hoc, constructive, backtracking} \\
+        출제진 의도 -- \textbf{\color{acsilver}Medium}
+    }
+    \begin{itemize}
+        \item 제출 28번, 정답자 9명 (정답률 32.143\%)
+        \item 처음 푼 사람: \textbf{박현민}, 20분
+        \item 출제자: \texttt{kaorin}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{H}. 순열 선물하기}
+    \begin{itemize}
+        \item $N=1$일 경우 $1$은 소수가 아니기 때문에 $[1]$ 순서로 선물합니다.
+        \item $N=2$일 경우 $[1, 2], [2, 1]$ 어느 방법으로도 선물하는 것이 불가능합니다.
+        \item $N\geq3$일 경우 $\frac{N \times (N + 1)}{2}$은 항상 합성수임을 이용합니다. $[1, 3, 2]$ 뒤에 $4, 5, \cdots, N$을 이어붙이는 방법으로 선물합니다.
+    \end{itemize}
+\end{frame}

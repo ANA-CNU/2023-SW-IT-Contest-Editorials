@@ -1,0 +1,27 @@
+# LaTeX temporary files
+*.aux
+*.log
+*.synctex.gz
+*.out
+*.toc
+*.idx
+*.ind
+*.ilg
+*.log
+*.gz
+*.nav
+*.snm
+
+# XeLaTeX auto-generated files
+*.xdv
+
+# LaTeX editor specific files
+*.bak
+*.swp
+*.synctex(busy)
+
+# macOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
