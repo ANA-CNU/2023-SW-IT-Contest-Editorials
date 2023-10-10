@@ -24,3 +24,19 @@ jobs:
         with:
           name: PDF
           path: main.pdf
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit PDF file
+        run: |
+          git add main.pdf
+          git commit -m "Update main.pdf"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.1
+        with:
+          branch: ${{ github.ref }}
+          force: true # Use with caution, this forcefully pushes changes to the current branch
