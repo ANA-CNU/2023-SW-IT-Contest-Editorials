@@ -1,0 +1,29 @@
+name: LaTeX Build and Commit
+
+on:
+  push:
+    paths:
+      - "*.tex"
+
+jobs:
+  build_and_commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up TeX Live
+        uses: xu-cheng/texlive-action@v1
+
+      - name: Build LaTeX document
+        run: |
+          xelatex -interaction=nonstopmode -halt-on-error main.tex
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add main.pdf
+          git commit -m "Update main.pdf"
+          git push
