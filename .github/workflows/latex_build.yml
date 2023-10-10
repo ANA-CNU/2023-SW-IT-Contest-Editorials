@@ -3,7 +3,7 @@ name: LaTeX Build and Commit
 on:
   push:
     paths:
-      - "*.tex"
+      - "**/*.tex"
 
 jobs:
   build_and_commit:
